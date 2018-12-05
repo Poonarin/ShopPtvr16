@@ -34,7 +34,7 @@ class App {
    // public SaverToFile saverToFile;
     public Saveble saver;
     public App(){
-//    this.saver = new SaverToFile();
+//this.saver = new SaverToFile();
         this.saver = new SaverToDB();
         this.products=saver.loadProducts();
         this.buyers = saver.loadBuyers();
@@ -47,14 +47,14 @@ class App {
     public void run(){
 
     Scanner scanner = new Scanner(System.in);
-    System.out.println("--------Igor Shop----------");
+    System.out.println("<<<<<<<<<<<<<<<<Welcome>>>>>>>>>>>>>>>>");
     String repeat = "r";
         do {
             System.out.println("Выберите нужное действие:");
             System.out.println("0 - для выхода из программы");
             System.out.println("1 - добавить товар");
             System.out.println("2 - идентифицировать покупателя");
-//            System.out.println("3 - Баланс");
+
             System.out.println("3 - Покупка");
             System.out.println("4 - Товары покупетелей");
             System.out.println("5 - Статистика городов");
@@ -89,9 +89,15 @@ class App {
                 case "3":
                     AddPurchase addPurchase = new AddPurchase();
                     System.out.println("");
-                    this.purchases.add(addPurchase.add(products,buyers,purchases));
-                    saver.saveHistories(purchases);
-                    System.out.println("---Покупатель выбрал товар---");
+                    Purchase purchase = addPurchase.add(products,buyers,purchases);
+                    
+                    if(purchase.getBuyer()!=null){
+                       this.purchases.add(purchase);
+                       saver.saveHistories(purchases);
+                       System.out.println("---Покупатель выбрал товар---");
+                    }
+                    
+                    
                     break;
                 case "4":
                     inserter.showHistoryPurchases(purchases);
