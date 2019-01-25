@@ -19,13 +19,13 @@
                 <ul>
             
             <c:forEach var="reader" items="${listReaders}">
-                <li>${reader.name}, ${reader.surname}, ${reader.code}</li> 
+                <li>${reader.name}, ${reader.surname}, ${reader.email}</li> 
             </c:forEach>
             
         </ul>
         
         
-        
+
         
         <p><a href="index.html">Home</a></p>
         <hr>

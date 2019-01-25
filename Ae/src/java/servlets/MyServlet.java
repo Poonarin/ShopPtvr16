@@ -29,7 +29,7 @@ import session.ReaderFacade;
  *
  * @author pupil
  */
-@WebServlet(name = "MyServlet", urlPatterns = {"/showListBooks","/showListReaders","/showPageGiveBook", "/giveBook", "/page5", "/page6"})
+@WebServlet(name = "MyServlet", urlPatterns = {"/showListBooks","/showListReaders","/showPageGiveBook", "/giveBook", "/addNewBook", "/addNewReader"})
 public class MyServlet extends HttpServlet {
 
     @EJB private BookFacade bookFacade;
@@ -79,9 +79,9 @@ public class MyServlet extends HttpServlet {
             historyFacade.create(history);
           
             
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/index.html").forward(request, response);
         }
-         else if ("/page5".equals(path)) {
+         else if ("/addNewBook".equals(path)) {
             String name = request.getParameter("name");
             String author = request.getParameter("author");
             String isbn = request.getParameter("isbn");
@@ -90,18 +90,18 @@ public class MyServlet extends HttpServlet {
             request.setAttribute("info", "Добавлено!");
           
             
-            request.getRequestDispatcher("/WEB-INF/page5.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/addNewBook.jsp").forward(request, response);
         }
-         else if ("/page6".equals(path)) {
+         else if ("/addNewReader".equals(path)) {
             String name = request.getParameter("name");
             String surname = request.getParameter("surname");
-            String code = request.getParameter("code");
+            String code = request.getParameter("email");
             Reader reader = new Reader(code, name, surname);
             readerFacade.create(reader);
             request.setAttribute("info", "Добавлено!");
           
             
-            request.getRequestDispatcher("/WEB-INF/page6.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/addNewReader.jsp").forward(request, response);
         }
         
         
