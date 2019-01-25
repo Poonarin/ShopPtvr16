@@ -1,0 +1,10 @@
+/* 
+    Created on : Dec 4, 2018, 1:28:21 PM
+    Author     : pupil
+*/
+h1{
+    color:red;
+}
+.invalid{
+    border: 1px solid #f60;
+}
